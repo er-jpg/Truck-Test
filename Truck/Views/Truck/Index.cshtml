@@ -1,0 +1,48 @@
+﻿@model IEnumerable<TruckViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <a class="btn btn-success" asp-action="Create">Add</a>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">@Html.DisplayNameFor(model => model.ID)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Description)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Name)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.FabricationYear)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.ModelYear)</th>
+                        <th scope="col">@Html.DisplayNameFor(model => model.Model.Name)</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <th scope="row">@Html.DisplayFor(modelItem => item.ID)</th>
+                        <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.FabricationYear)</td>
+                        <td>@Html.DisplayFor(modelItem => item.ModelYear)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Model.Name)</td>
+                        <td>
+                            <a class="btn btn-primary" asp-action="Details" asp-route-id="@item.ID">View</a>
+                            <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.ID">Edit</a>
+                            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.ID">Del</a>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
